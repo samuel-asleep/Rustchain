@@ -348,7 +348,7 @@ setup_launchd_service() {
     <key>ProgramArguments</key>
     <array>
         <string>$venv_python</string>
-        <string>-u</string>
+        <string>-u</string>  <!-- Unbuffered output for real-time logging -->
         <string>$INSTALL_DIR/rustchain_miner.py</string>
         <string>--wallet</string>
         <string>$wallet</string>
@@ -381,6 +381,7 @@ EOF
 # Test connection
 test_connection() {
     echo -e "${YELLOW}[*] Testing connection to RustChain node...${NC}"
+    # Note: Using -k to bypass SSL verification as node may use self-signed cert
     if curl -sSk "$NODE_URL/health" | grep -q '"ok":true'; then
         echo -e "${GREEN}[+] Node connection successful!${NC}"
         return 0

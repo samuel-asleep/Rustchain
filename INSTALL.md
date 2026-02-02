@@ -152,6 +152,7 @@ tail -f ~/.rustchain/miner.log
 
 ### Balance Check
 ```bash
+# Note: Using -k flag because node may use self-signed SSL certificate
 curl -sk https://50.28.86.131/wallet/YOUR_WALLET_NAME/balance
 ```
 
@@ -358,6 +359,7 @@ curl -sSL https://raw.githubusercontent.com/Scottcjn/Rustchain/main/install.sh |
 3. The miner runs as your user (not root)
 4. Services are user-level (systemd --user, ~/Library/LaunchAgents)
 5. All logs are stored in your home directory
+6. **SSL Certificate:** The RustChain node (50.28.86.131) may use a self-signed SSL certificate. The `-k` flag in curl commands bypasses certificate verification. This is a known limitation of the current infrastructure. In production, you should verify the node's identity through other means (community consensus, explorer verification, etc.).
 
 ## Contributing
 

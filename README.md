@@ -64,6 +64,7 @@ curl -sSL https://raw.githubusercontent.com/Scottcjn/Rustchain/main/install.sh |
 
 **Check your wallet balance:**
 ```bash
+# Note: Using -sk flags because the node may use a self-signed SSL certificate
 curl -sk https://50.28.86.131/wallet/YOUR_WALLET_NAME/balance
 ```
 
